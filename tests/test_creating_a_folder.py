@@ -15,8 +15,8 @@ def test_creating_a_folder():
     requests.put("https://cloud-api.yandex.net/v1/disk/resources", headers=headers, params=params)
 
     response = requests.get("https://cloud-api.yandex.net/v1/disk/resources", headers=headers, params=params)
-    assert response.json()['path'] == "disk:/API_test"
     assert response.status_code == 200
+    assert response.json()['path'] == "disk:/API_test"
 
     LOGGER.info("Deleting this folder")
     requests.delete("https://cloud-api.yandex.net/v1/disk/resources", headers=headers, params=params)
